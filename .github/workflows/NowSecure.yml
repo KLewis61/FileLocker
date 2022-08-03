@@ -48,6 +48,14 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: app
+          
+      - name: NowSecure upload app
+        uses: nowsecure/nowsecure-sbom-action@v1
+        timeout-minutes: 60
+        with:
+          token: ${{ secrets.NS_TOKEN }}
+          app_file: FileLocker-debug.apk # REPLACE: The path to an .ipa or .apk
+          group_id: "d8586c67-7794-4535-8200-1ff9c9acd35e"        # REPLACE: NowSecure Group ID
 
       - name: NowSecure
         uses: nowsecure/nowsecure-action@v1
